@@ -12,7 +12,15 @@ const rideRoutes = require('./routes/ride.routes');
 
 connectToDb();
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://cloneubrfullstack.netlify.app', // Allow requests only from your Netlify app
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // You can adjust methods based on your API
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'], // Headers that are allowed in requests
+    credentials: true, // Allow cookies (if you're using cookies for authentication)
+  };
+  
+  
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
