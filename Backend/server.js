@@ -24,14 +24,10 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use(cors({ origin: "https://cloneubrfullstack.netlify.app https://uber-fullstack.onrender.com", credentials: true }));
+app.use(cors({ origin: "http://localhost:3000, http://localhost:5173/, https://cloneubrfullstack.netlify.app https://uber-fullstack.onrender.com", credentials: true }));
 app.get("/", (req, res) => res.send("Server is running!"));
 
-app._router.stack.forEach((r) => {
-  if (r.route && r.route.path) {
-      console.log(r.route.path);
-  }
-});
+
 
 
 // Start server
@@ -39,7 +35,7 @@ app._router.stack.forEach((r) => {
 //   console.log("Server is running on port 3000");
 // });
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 
 // const http = require('http');

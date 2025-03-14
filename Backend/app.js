@@ -17,10 +17,10 @@ const app = express();
 const server = http.createServer(app); // Create an HTTP server
 
 // Enable CORS for HTTP requests
-app.use(cors({
-    origin: 'https://cloneubrfullstack.netlify.app', // Replace with your frontend URL
-    credentials: true
-}));
+// app.use(cors({
+//     origin: 'https://cloneubrfullstack.netlify.app', // Replace with your frontend URL
+//     credentials: true
+// }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,11 +29,14 @@ app.use(cookieParser());
 // Initialize Socket.io with WebSocket CORS settings
 const io = new Server(server, {
     cors: {
-        origin: 'https://cloneubrfullstack.netlify.app', // Replace with your frontend's URL
+        origin: 'http://localhost:3000 ,https://cloneubrfullstack.netlify.app', // Replace with your frontend's URL
         methods: ['GET', 'POST'],
         credentials: true
     }
 });
+
+
+
 
 // Handle WebSocket connections
 io.on('connection', (socket) => {
