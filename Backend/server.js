@@ -9,7 +9,7 @@ const server = http.createServer(app);
 // Enable CORS for WebSockets
 const io = new Server(server, {
   cors: {
-    origin: ["https://cloneubrfullstack.netlify.app"], // Your frontend domain
+    origin: ["https://cloneubrfullstack.netlify.app","https://uber-fullstack.onrender.com/"], // Your frontend domain
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -26,6 +26,13 @@ io.on("connection", (socket) => {
 
 app.use(cors({ origin: "https://cloneubrfullstack.netlify.app", credentials: true }));
 app.get("/", (req, res) => res.send("Server is running!"));
+
+app._router.stack.forEach((r) => {
+  if (r.route && r.route.path) {
+      console.log(r.route.path);
+  }
+});
+
 
 // Start server
 server.listen(3000, () => {
