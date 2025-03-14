@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use(cors({ origin: "https://cloneubrfullstack.netlify.app", credentials: true }));
+app.use(cors({ origin: "https://cloneubrfullstack.netlify.app https://uber-fullstack.onrender.com", credentials: true }));
 app.get("/", (req, res) => res.send("Server is running!"));
 
 app._router.stack.forEach((r) => {
