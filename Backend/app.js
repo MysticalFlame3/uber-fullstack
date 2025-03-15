@@ -13,6 +13,8 @@ const rideRoutes = require('./routes/ride.routes');
 connectToDb();
 
 app.use(cors());
+import cors from "cors";
+app.use(cors({ origin: "https://cloneubrfullstack.netlify.app", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
